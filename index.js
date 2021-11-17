@@ -43,11 +43,16 @@ const calculate = () => {
 for (let button of controlButtons) {
   button.addEventListener('click', () => {
     const { innerText: btnValue } = button
-    const btnValueIsSymbol =  isNaN(btnValue)
+    const btnValueIsSymbol = isNaN(btnValue)
+
+    if (btnValue === '') return null
 
     if (!symbol && !btnValueIsSymbol) {
       firstValue += btnValue
-      if (result || result === 0) firstValue = btnValue
+      if (result || result === 0) {
+        firstValue = btnValue
+        result = ''
+      }
     }
 
     if (symbol && !btnValueIsSymbol) secondValue += btnValue
